@@ -1,4 +1,4 @@
-<style>
+
 	#photoArea {
 		width:640px;
 		height:400px;
@@ -22,9 +22,7 @@
 		margin:auto;
 		height:100%;
 	}
-</style>
 
-<style>
 	.hscroll_wrapper {
 		position:relative;
 		padding:0 1.5em 0 0.5em;
@@ -92,4 +90,3 @@
 	.arrow:hover:before {
 		border-color:white;
 	}
-</style>
