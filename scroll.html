@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+</head>
+<body>
+	<div class="hscroll_wrapper">
+		<span class="arrow left"></span>
+		<div>
+			<a href="">短い文字1</a>
+			<a href="">長めのお知らせテキスト1</a>
+			<a href="">短い文字2</a>
+			<a href="">長めのお知らせテキスト2</a>
+			<a href="">短い文字3</a>
+			<a href="">長めのお知らせテキスト3</a>
+		</div>
+		<span class="arrow right"></span>
+	</div>
+	
+	<div id="photoArea">
+		<div id="photoContainer">
+			<img src="img/chuou.jpg" />
+		</div>
+	</div>
+</body>
+
+<style>
+	#photoArea {
+		width:640px;
+		height:400px;
+		margin-top:30px;
+		padding:10px;
+		overflow:hidden;
+		background-color:lightgray;
+	}
+	
+	#photoContainer {
+		height:100%;
+		overflow:hidden;
+		padding:10px;
+		scroll-behavior: smooth;
+		scroll-snap-type:inline;
+		background-color:brown;
+	}
+
+	#photoContainer img {
+		display:block;
+		margin:auto;
+		height:100%;
+	}
+</style>
+
+<style>
+	.hscroll_wrapper {
+		position:relative;
+		padding:0 1.5em 0 0.5em;
+		border:1px solid #cccccc;
+		border-radius:0.5em;
+		max-width:400px;
+	}
+	.hscroll_wrapper div {
+		white-space:nowrap;
+		overflow-x:hidden;
+		margin: 0 0.1em 0 1em;
+		scroll-behavior: smooth;
+		scroll-snap-type:inline;
+	}
+	.hscroll_wrapper a {
+		display:inline-block;
+		margin:0 1em 0 0;
+		scroll-snap-align:center;
+	}
+	@media screen and (max-width:480px) {
+		.hscroll_wrapper div {
+			overflow-x:auto;
+		}
+	}
+
+	.arrow {
+		display:inline-block;
+		position:absolute;
+		border-radius:50%;
+		width:1em;
+		height:1em;
+		cursor:pointer;
+		border:1px solid #808080;
+		vertical-align:middle;
+		margin-bottom:4px;
+		top:3px;
+	}
+	.left {
+		left:2px;
+	}
+	.right {
+		right:2px;
+	}
+	.arrow:before {
+		content:'';
+		position:absolute;
+		width:0.4em;
+		height:0.4em;
+		border-left:1px solid #808080;
+		border-bottom:1px solid #808080;
+	}
+	.left:before {
+		top:28%;
+		left:35%;
+		transform:rotate(45deg);
+	}
+	.right:before {
+		top:28%;
+		left:20%;
+		transform:rotate(-135deg);
+	}
+	.arrow:hover {
+		background-color:#808080;
+	}
+	.arrow:hover:before {
+		border-color:white;
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.left').forEach(elm => {
+		elm.onclick = function () {
+			let div = this.parentNode.querySelector('.hscroll_wrapper div');
+			div.scrollLeft -= (div.clientWidth / 2);
+		};
+	});
+	document.querySelectorAll('.right').forEach(elm => {
+		elm.onclick = function () {
+			let div = this.parentNode.querySelector('.hscroll_wrapper div');
+			div.scrollLeft += (div.clientWidth / 2);
+		};
+	});
+</script>
+
+</html>
